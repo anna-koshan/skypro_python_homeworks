@@ -1,0 +1,142 @@
+Баг-репорт 1:
+Воспроизведение пустой строки для метода capitilize проходит успешно.
+Шаги: 
+1. Ввести функцию: 
+@pytest.mark.parametrize( 'string, result', 
+[('skypro', 'Skypro'), ('hope', 'Hope'), (123, 123), ('', '')] )
+def test_capitilize(string, result):
+    res = Utils.capitilize(string)
+    assert res == result
+2. В терминале ввести команду pytest
+Ожидаемый результат: провалено два теста: (123, 123) и ('', '')
+Фактический результат: провален только один тест: (123, 123). ('', '') - пройден успешно
+
+Баг-репорт 2:
+Воспроизведение пустой строки для метода trim проходит успешно.
+Шаги: 
+1. Ввести функцию: 
+@pytest.mark.parametrize( 'string, result', 
+[('skypro', 'skypro'), (' hope', 'hope'), ('  hope', 'hope'), ('                     hope', 'hope'), (123, 123), ('', '')] )
+def test_trim(string, result):
+    res = Utils.trim(string)
+    assert res == result
+2. В терминале ввести команду pytest
+Ожидаемый результат: провалено два теста: (123, 123) и ('', '')
+Фактический результат: провален только один тест: (123, 123). ('', '') - пройден успешно
+
+Баг-репорт 3:
+Воспроизведение значений в формате int в методе contains не приводит к ошибке
+Шаги:
+1. Ввести функцию:
+@pytest.mark.parametrize( 'string, symbol, result', 
+[("SkyPro", "S", True), ("SkyPro", "U", False), ("123", "2", True)] )
+def test_contains(string, symbol, result):
+    res = Utils.contains(string, symbol)
+    assert res == result
+2. В терминале ввести команду pytest
+Ожидаемый результат: ошибка, указывающая на численные значения. В утилитах принимаются только значения str
+Фактический результат: все тесты прошли успешно
+
+Баг-репорт 4:
+Воспроизведение пустой строки для метода contains проходит успешно.
+Шаги: 
+1. Ввести функцию: 
+@pytest.mark.parametrize( 'string, symbol, result', 
+[("SkyPro", "S", True), ("SkyPro", "U", False), ('', 'a', False)] )
+def test_contains(string, symbol, result):
+    res = Utils.contains(string, symbol)
+    assert res == result
+2. В терминале ввести команду pytest
+Ожидаемый результат: провален тест ('', 'a', False)
+Фактический результат: все тесты пройдены успешно
+
+Баг-репорт 5:
+Воспроизведение пустой строки для метода delete_symbol проходит успешно.
+Шаги: 
+1. Ввести функцию: 
+@pytest.mark.parametrize( 'string, symbol, result', 
+[("SkyPro", "k", "SyPro"), ("SkyPro", "Pro", "Sky"), ("123", "2", "13"), ('', '', '')] )
+def test_delete_symbol(string, symbol, result):
+    res = Utils.delete_symbol(string, symbol)
+    assert res == result
+2. В терминале ввести команду pytest
+Ожидаемый результат: провален тест ('', '', '')
+Фактический результат: все тесты пройдены успешно
+
+Баг-репорт 6:
+Воспроизведение значений в формате int в методе delete_symbol не приводит к ошибке
+Шаги:
+1. Ввести функцию:
+@pytest.mark.parametrize( 'string, symbol, result', 
+[("SkyPro", "k", "SyPro"), ("SkyPro", "Pro", "Sky"), ("123", "2", "13")] )
+def test_delete_symbol(string, symbol, result):
+    res = Utils.delete_symbol(string, symbol)
+    assert res == result
+2. В терминале ввести команду pytest
+Ожидаемый результат: ошибка, указывающая на численные значения. В утилитах принимаются только значения str
+Фактический результат: все тесты прошли успешно
+
+Баг-репорт 7:
+Воспроизведение пустой строки для метода starts_with проходит успешно.
+Шаги: 
+1. Ввести функцию: 
+@pytest.mark.parametrize( 'string, symbol, result', 
+[("SkyPro", "S", True), ("SkyPro", "P", False), ('', '', True)] )
+def test_starts_with(string, symbol, result):
+    res = Utils.starts_with(string, symbol)
+    assert res == result
+2. В терминале ввести команду pytest
+Ожидаемый результат: провален тест ('', '', True)
+Фактический результат: все тесты пройдены успешно
+
+Баг-репорт 8:
+Воспроизведение значений в формате int в методе starts_with не приводит к ошибке
+Шаги:
+1. Ввести функцию:
+@pytest.mark.parametrize( 'string, symbol, result', 
+[("SkyPro", "S", True), ("SkyPro", "P", False), ("123", "1", True)] )
+def test_starts_with(string, symbol, result):
+    res = Utils.starts_with(string, symbol)
+    assert res == result
+2. В терминале ввести команду pytest
+Ожидаемый результат: ошибка, указывающая на численные значения. В утилитах принимаются только значения str
+Фактический результат: все тесты прошли успешно
+
+Баг-репорт 9:
+Воспроизведение пустой строки для метода end_with проходит успешно.
+Шаги: 
+1. Ввести функцию: 
+@pytest.mark.parametrize( 'string, symbol, result', 
+[("SkyPro", "o", True), ("SkyPro", "y", False), ('', '', True)] )
+def test_end_with(string, symbol, result):
+    res = Utils.end_with(string, symbol)
+    assert res == result
+2. В терминале ввести команду pytest
+Ожидаемый результат: провален тест ('', '', True)
+Фактический результат: все тесты пройдены успешно
+
+Баг-репорт 10:
+Воспроизведение значений в формате int в методе end_with не приводит к ошибке
+Шаги:
+1. Ввести функцию:
+@pytest.mark.parametrize( 'string, symbol, result', 
+[("SkyPro", "o", True), ("SkyPro", "y", False), ("123", "3", True)] )
+def test_end_with(string, symbol, result):
+    res = Utils.end_with(string, symbol)
+    assert res == result
+2. В терминале ввести команду pytest
+Ожидаемый результат: ошибка, указывающая на численные значения. В утилитах принимаются только значения str
+Фактический результат: все тесты прошли успешно
+
+Баг-репорт 11:
+Воспроизведение пустой строки для метода list_to_stringh проходит успешно.
+Шаги: 
+1. Ввести функцию: 
+@pytest.mark.parametrize( 'lst, joiner, result', 
+[([1,2,3,4], ",", "1,2,3,4"), (["Sky", "Pro"], ":", "Sky:Pro"), (["Sky", "Pro"], "-", "Sky-Pro"), ([], '-', '')] )
+def test_list_to_string(lst, joiner, result):
+    res = Utils.list_to_string(lst, joiner)
+    assert res == result
+2. В терминале ввести команду pytest
+Ожидаемый результат: провален тест ([], '-', '')
+Фактический результат: все тесты пройдены успешно
