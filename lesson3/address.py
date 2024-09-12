@@ -7,7 +7,7 @@ class Address:
        self.home = home
        self.room = room
 
-    def sayInfo (self):
+    def get_Info (self):
         return f'{self.index}, {self.city}, {self.street}, {self.home} - {self.room}'
 
     

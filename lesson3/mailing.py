@@ -8,5 +8,5 @@ class Mailing:
        self.cost = cost
        self.track = track
 
-    def sayAddress (self):
-        print (f'Отправление {self.track} из {self.from_address} в {self.to_address}. Стоимость {self.cost} рублей.')
+    def sayAddress(self):
+        print(f'Отправление {self.track} из {self.from_address.get_Info()} в {self.to_address.get_Info()}. Стоимость {self.cost} рублей.')
